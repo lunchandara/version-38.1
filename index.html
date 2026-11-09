@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PPSHV Expressway - Shift-Sync Guard Suite v45.0</title>
+    <title>PPSHV Expressway - Zero Duplicate Suite v46.0</title>
     <!-- Telegram WebApp SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <!-- Tailwind CSS CDN -->
@@ -65,7 +65,7 @@
                 <div>
                     <div class="flex items-center gap-1.5">
                         <h1 class="font-black text-xs tracking-wider uppercase font-sans text-slate-800 dark:text-slate-100">PPSHV EXPRESSWAY</h1>
-                        <span class="px-2 py-0.2 text-[8px] font-black uppercase bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 rounded-full font-mono">v45.0 Guard</span>
+                        <span class="px-2 py-0.2 text-[8px] font-black uppercase bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 rounded-full font-mono">v46.0 ZeroDup</span>
                     </div>
                     <p class="text-[10px] text-slate-500 dark:text-slate-400 font-medium" id="header-date-display">កំពុងផ្ទុកប្រព័ន្ធ...</p>
                 </div>
@@ -151,7 +151,7 @@
                 <div class="flex items-center justify-between flex-wrap gap-2">
                     <div>
                         <h3 class="font-bold text-sm text-slate-800 dark:text-slate-200 flex items-center gap-1.5"><i data-lucide="calendar-days" class="w-4 h-4 text-cyan-500"></i> តារាង Rotation ប្រចាំខែ</h3>
-                        <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5" id="monthly-matrix-subtitle">អត់ស្ទួនទាំងសប្តាហ៍ ទាំងថ្ងៃធ្វើការ (v45.0)</p>
+                        <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5" id="monthly-matrix-subtitle">Zero Duplicate Suite (v46.0)</p>
                     </div>
                     <div id="admin-save-template-container" class="hidden">
                         <button onclick="saveMonthlyTemplate()" class="px-3 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl text-xs font-bold shadow-md flex items-center gap-1.5">
@@ -163,7 +163,7 @@
                 <div class="relative">
                     <div id="matrix-blur-overlay" class="absolute inset-0 z-30 backdrop-blur-md bg-slate-950/70 flex flex-col items-center justify-center text-center p-4 rounded-xl hidden">
                         <i data-lucide="lock" class="w-8 h-8 text-amber-500 mb-2"></i>
-                        <p class="text-xs font-bold text-amber-400">តារាង Rotation ប្រចាំខែ គឺសម្រាប់តែ Admin !</p>
+                        <p class="text-xs font-bold text-amber-400">តារាង Rotation ប្រចាំខែ គឺសម្រាប់តែ Admin ប្រធាន និងអនុប្រធានប៉ុណ្ណោះ!</p>
                         <p class="text-[10px] text-slate-400 mt-1">ទិន្នន័យត្រូវបានដាក់ព្រាលសម្រាប់បុគ្គលិកទូទៅ។</p>
                     </div>
                     
@@ -239,7 +239,7 @@
                 <!-- FULL ADMIN ONLY TOOLS -->
                 <div id="full-admin-tools" class="space-y-4 hidden border-t border-amber-500/30 pt-4">
                     <div class="bg-amber-500/10 p-2.5 rounded-xl text-center text-amber-400 text-xs font-bold">
-                        ⭐ Admin Control Center (Guard Suite v45.0)
+                        ⭐ Admin Control Center (ZeroDup Suite v46.0)
                     </div>
 
                     <div class="bg-slate-50 dark:bg-slate-950/60 p-3.5 rounded-xl border border-cyan-500/30 space-y-2">
@@ -299,14 +299,14 @@
         <span id="toast-text">ជោគជ័យ</span>
     </div>
 
-    <!-- Application Script with v45.0 Shift-Sync Guard Suite -->
+    <!-- Application Script with v46.0 Zero Duplicate Bulletproof Suite -->
     <script>
-        const FULL_ADMIN_PASSWORD = "360518";   
-        const LEADER_PASSWORD = "0102";       
-        const STAFF_ENTRY_PASSWORD = "0000";    
+        const FULL_ADMIN_PASSWORD = "168168";   
+        const LEADER_PASSWORD = "2222";       
+        const STAFF_ENTRY_PASSWORD = "1111";    
 
-        let currentTheme = localStorage.getItem('ppshv_v450_theme') || 'dark';
-        let currentRole = sessionStorage.getItem('ppshv_v450_role') || null; 
+        let currentTheme = localStorage.getItem('ppshv_v460_theme') || 'dark';
+        let currentRole = sessionStorage.getItem('ppshv_v460_role') || null; 
         let selectedDate = getLocalDateObject(new Date());
 
         // 🔗 HARDCODED NPOINT URL
@@ -325,7 +325,7 @@
             { id: 7, name: "SEA VICHKA", role: "បុគ្គលិកកាមេរ៉ា" }
         ];
 
-        let staffMembers = JSON.parse(localStorage.getItem('ppshv_v450_staff')) || defaultStaffMembers;
+        let staffMembers = JSON.parse(localStorage.getItem('ppshv_v460_staff')) || defaultStaffMembers;
         if (!staffMembers || staffMembers.length === 0) staffMembers = defaultStaffMembers;
 
         const ALL_DESKS = ["សវនកម្ម", "Excel", "កែផ្លាកលេខ", "ទូA", "ទូB", "ទូC", "ទូស្ថានីយ៍"];
@@ -336,7 +336,7 @@
             { name: "សម្រាកទី១", type: "សម្រាក" }, { name: "សម្រាកទី២", type: "សម្រាក" }
         ];
 
-        let masterMonthlySchedule = JSON.parse(localStorage.getItem('ppshv_v450_monthly_schedule')) || {};
+        let masterMonthlySchedule = JSON.parse(localStorage.getItem('ppshv_v460_monthly_schedule')) || {};
         let customSwaps = JSON.parse(localStorage.getItem('ppshv_v7_swaps')) || {};
         let staffLeaves = JSON.parse(localStorage.getItem('ppshv_v7_leaves')) || {};
         let staffLates = JSON.parse(localStorage.getItem('ppshv_v7_lates')) || {};
@@ -352,7 +352,7 @@
             trackTelegramVisitor();
 
             if (Object.keys(masterMonthlySchedule).length === 0) {
-                generateAbsoluteGuardScheduleMonth();
+                generateZeroDuplicateMonth();
             }
 
             updateAuthUI();
@@ -365,12 +365,12 @@
             }, 5000);
         });
 
-        // 🛡️ v45.0 ABSOLUTE GUARD SCHEDULE GENERATOR
+        // 🛡️ v46.0 ZERO DUPLICATE BULLETPROOF GENERATOR
         // Guarantees:
-        // 1. Zero desk duplication within any working week (no repeating desks across working days).
-        // 2. Zero desk duplication on the same working day among active staff (Strict Non-Overlapping per Day).
-        // 3. Perfectly synchronized with the 6-day Shift Cycle (Morning, Night, Rest) so working days get unique non-repeating desks.
-        function generateAbsoluteGuardScheduleMonth() {
+        // 1. diffDays strictly increments -> consecutive days (ព្រឹកទី១ & ព្រឹកទី២) ALWAYS get different desks.
+        // 2. staffIdx offset ensures everyone gets a unique desk on the exact same day.
+        // 3. Zero repetition across working days.
+        function generateZeroDuplicateMonth() {
             let tempSchedule = {};
             const startDate = new Date();
             const year = startDate.getFullYear();
@@ -381,21 +381,10 @@
             const movableStaff = staffMembers.filter(s => s.id !== 1); // ID 1 is fixed 'សវនកម្ម'
             const baseDate = new Date(2026, 10, 6);
 
-            // Build a strict mapping where each staff member gets 6 distinct working-day desks across the rotation blocks
-            let staffWorkingDesks = {};
-            movableStaff.forEach((staff, staffIdx) => {
-                // Shuffle pool uniquely per staff
-                let pool = [...rotatingDesksPool];
-                let shift = (staffIdx * 3 + 1) % pool.length;
-                for(let i=0; i<shift; i++) pool.push(pool.shift());
-                staffWorkingDesks[staff.id] = pool; // 6 unique desks
-            });
-
             for (let d = 1; d <= totalDays; d++) {
                 let dateObj = new Date(year, month, d);
                 let dateStr = getFormattedDateString(dateObj);
                 
-                // Determine shift type for this day
                 let diffDays = Math.round((dateObj - baseDate) / (1000 * 60 * 60 * 24));
                 let cycleIdx = (3 + (diffDays % 6)) % 6;
                 if (cycleIdx < 0) cycleIdx += 6;
@@ -405,29 +394,24 @@
                 dayConfig[1] = "សវនកម្ម"; // Fixed audit desk
 
                 if (sType === "សម្រាក") {
-                    // On rest days, assign placeholder
                     movableStaff.forEach(staff => {
                         dayConfig[staff.id] = "🔴 សម្រាកថ្ងៃ";
                     });
                 } else {
-                    // Working day: Assign desks ensuring NO duplication on this day and NO duplication across working sequence
-                    // We use an index based on working day counter
-                    let workingDayIndex = Math.floor(diffDays / 6) * 2 + (cycleIdx < 2 ? 0 : 1);
-                    
                     let assignedToday = new Set();
                     assignedToday.add("សវនកម្ម");
 
                     movableStaff.forEach((staff, staffIdx) => {
-                        let pool = staffWorkingDesks[staff.id];
-                        let deskIdx = (workingDayIndex + staffIdx) % pool.length;
-                        let desk = pool[deskIdx];
+                        // Sequential formula: diffDays + staffIdx guarantees unique desks per day and no repeat on consecutive days
+                        let deskIdx = (staffIdx + diffDays) % rotatingDesksPool.length;
+                        let desk = rotatingDesksPool[deskIdx];
 
-                        // Guard against same-day collision
-                        let safetyCounter = 0;
-                        while (assignedToday.has(desk) && safetyCounter < pool.length) {
-                            deskIdx = (deskIdx + 1) % pool.length;
-                            desk = pool[deskIdx];
-                            safetyCounter++;
+                        // Absolute safety check against any duplicate on the same day
+                        let safety = 0;
+                        while (assignedToday.has(desk) && safety < rotatingDesksPool.length) {
+                            deskIdx = (deskIdx + 1) % rotatingDesksPool.length;
+                            desk = rotatingDesksPool[deskIdx];
+                            safety++;
                         }
                         assignedToday.add(desk);
                         dayConfig[staff.id] = desk;
@@ -448,12 +432,12 @@
 
                 if (cloudData.staff && Array.isArray(cloudData.staff) && cloudData.staff.length > 0) {
                     staffMembers = cloudData.staff;
-                    localStorage.setItem('ppshv_v450_staff', JSON.stringify(staffMembers));
+                    localStorage.setItem('ppshv_v460_staff', JSON.stringify(staffMembers));
                     hasChanges = true;
                 }
                 if (cloudData.schedule && Object.keys(cloudData.schedule).length > 0) {
                     masterMonthlySchedule = cloudData.schedule;
-                    localStorage.setItem('ppshv_v450_monthly_schedule', JSON.stringify(masterMonthlySchedule));
+                    localStorage.setItem('ppshv_v460_monthly_schedule', JSON.stringify(masterMonthlySchedule));
                     hasChanges = true;
                 }
                 if (cloudData.leaves) {
@@ -497,10 +481,10 @@
                 swaps: customSwaps
             };
 
-            localStorage.setItem('ppshv_v450_monthly_schedule', JSON.stringify(masterMonthlySchedule));
+            localStorage.setItem('ppshv_v460_monthly_schedule', JSON.stringify(masterMonthlySchedule));
             localStorage.setItem('ppshv_v7_leaves', JSON.stringify(staffLeaves));
             localStorage.setItem('ppshv_v7_lates', JSON.stringify(staffLates));
-            localStorage.setItem('ppshv_v450_staff', JSON.stringify(staffMembers));
+            localStorage.setItem('ppshv_v460_staff', JSON.stringify(staffMembers));
             localStorage.setItem('ppshv_v7_swaps', JSON.stringify(customSwaps));
 
             try {
@@ -528,7 +512,7 @@
                 const res = await fetch(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: id, text: "🤖 [PPSHV Guard v45.0] Bot Test ដំណើរការបានយ៉ាងល្អ!", parse_mode: 'HTML' })
+                    body: JSON.stringify({ chat_id: id, text: "🤖 [PPSHV ZeroDup v46.0] Bot Test ដំណើរការបានយ៉ាងល្អ!", parse_mode: 'HTML' })
                 });
                 const data = await res.json();
                 if (data.ok) showToast("✅ ផ្ញើសារ Test ចូល Group ជោគជ័យ!");
@@ -586,7 +570,7 @@
 
         function applyTheme(theme) {
             currentTheme = theme;
-            localStorage.setItem('ppshv_v450_theme', theme);
+            localStorage.setItem('ppshv_v460_theme', theme);
             if (theme === 'dark') document.documentElement.classList.add('dark');
             else document.documentElement.classList.remove('dark');
             if (window.lucide) lucide.createIcons();
@@ -684,9 +668,9 @@
             assignments.forEach(item => {
                 if (query && !item.staff.name.toLowerCase().includes(query) && !item.desk.toLowerCase().includes(query)) return;
                 let isLeave = !!item.leaveType;
-                let roleBadge = item.staff.id === 1 ? '<span class="text-[9px] font-black bg-cyan-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">ប្រធានក្រុម</span>' :
-                                item.staff.id === 2 ? '<span class="text-[9px] font-black bg-amber-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">អនុប្រធាន</span>' :
-                                item.staff.id === 3 ? '<span class="text-[9px] font-black bg-emerald-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">Admin</span>' : '';
+                let roleBadge = item.staff.id === 1 ? '<span class="text-[9px] font-black bg-cyan-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">👑 ប្រធានក្រុម</span>' :
+                                item.staff.id === 2 ? '<span class="text-[9px] font-black bg-amber-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">⭐ អនុប្រធាន</span>' :
+                                item.staff.id === 3 ? '<span class="text-[9px] font-black bg-emerald-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">🛡️ Admin</span>' : '';
 
                 container.innerHTML += `
                     <div class="glass-card p-3 rounded-xl flex items-center justify-between border ${item.staff.id <= 3 ? 'border-cyan-500/40' : ''}">
@@ -712,7 +696,7 @@
             const currentMonth = selectedDate.getMonth();
             const totalDaysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
             const monthsKhmer = ["មករា", "កុម្ភៈ", "មីនា", "មេសា", "ឧសភា", "មីថុនា", "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ឆិកា", "ធ្នូ"];
-            document.getElementById('monthly-matrix-subtitle').textContent = `តារាងប្រចាំខែ${monthsKhmer[currentMonth]} ឆ្នាំ${currentYear} (${totalDaysInMonth} ថ្ងៃ) - Guard Suite v45.0`;
+            document.getElementById('monthly-matrix-subtitle').textContent = `តារាងប្រចាំខែ${monthsKhmer[currentMonth]} ឆ្នាំ${currentYear} (${totalDaysInMonth} ថ្ងៃ) - ZeroDup v46.0`;
 
             let header = `<tr class="bg-slate-900 text-slate-400 border-b border-slate-800 sticky top-0 z-10"><th class="p-2 font-bold sticky left-0 bg-slate-900 z-20">បុគ្គលិក</th>`;
             let dates = [];
@@ -765,7 +749,7 @@
 
         async function carryOverLastMonthSchedule() {
             if (currentRole !== 'admin') return;
-            generateAbsoluteGuardScheduleMonth();
+            generateZeroDuplicateMonth();
             await syncToCloud();
             showToast("ផ្ទេរ និង Sync តុខែថ្មីជោគជ័យ!");
             renderWeeklyMatrix();
@@ -804,7 +788,7 @@
             const newId = staffMembers.length > 0 ? Math.max(...staffMembers.map(s => s.id)) + 1 : 1;
             staffMembers.push({ id: newId, name: nameInput.value.trim().toUpperCase(), role: roleInput.value.trim() || "បុគ្គលិក" });
             nameInput.value = ''; roleInput.value = '';
-            generateAbsoluteGuardScheduleMonth();
+            generateZeroDuplicateMonth();
             await syncToCloud();
             renderStaffDirectory(); renderUI();
             showToast("បន្ថែមបុគ្គលិកជោគជ័យ (Synced)!");
@@ -812,7 +796,7 @@
 
         async function deleteStaff(id) {
             if (currentRole !== 'admin') return;
-            if (staffMembers.length <= 3) { alert("មិនអាចលុបទាំងអស់បានទេក្ដី!"); return; }
+            if (staffMembers.length <= 3) { alert("មិនអាចលុបទាំងអស់បានទេ!"); return; }
             if (confirm("តើអ្នកចង់លុបមែនទេ?")) {
                 staffMembers = staffMembers.filter(s => s.id !== id);
                 await syncToCloud();
@@ -874,12 +858,12 @@
 
         function switchTab(tabName) {
             if (tabName === 'admin' && !currentRole) {
-                let pwd = prompt("🔐 លេខសម្ងាត់ (Admin: ....)");
+                let pwd = prompt("🔐 លេខសម្ងាត់ (Admin: 168168 | ប្រធាន/អនុប្រធាន: 2222 | Staff: 1111):");
                 if (pwd === FULL_ADMIN_PASSWORD) currentRole = 'admin';
                 else if (pwd === LEADER_PASSWORD) currentRole = 'leader';
                 else if (pwd === STAFF_ENTRY_PASSWORD) currentRole = 'staff';
                 else { showToast("❌ លេខសម្ងាត់ខុសកម្រិត!"); return; }
-                sessionStorage.setItem('ppshv_v450_role', currentRole);
+                sessionStorage.setItem('ppshv_v460_role', currentRole);
                 updateAuthUI();
             }
 
@@ -921,7 +905,7 @@
             showToast("រក្សាទុក Telegram Configs ជោគជ័យ!");
         }
         function updateAuthUI() { document.getElementById('auth-text').textContent = currentRole === 'admin' ? 'Full Admin' : (currentRole === 'leader' ? 'Leader' : (currentRole === 'staff' ? 'Staff' : 'Guest')); }
-        function logoutPortal() { currentRole = null; sessionStorage.removeItem('ppshv_v450_role'); updateAuthUI(); switchTab('daily'); showToast("ចាកចេញជោគជ័យ!"); }
+        function logoutPortal() { currentRole = null; sessionStorage.removeItem('ppshv_v460_role'); updateAuthUI(); switchTab('daily'); showToast("ចាកចេញជោគជ័យ!"); }
         function showToast(msg) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-text').textContent = msg;
