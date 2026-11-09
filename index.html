@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PPSHV Expressway - Strict Rotation Suite v39.0</title>
+    <title>PPSHV Expressway - Strict Matrix Suite v39.2</title>
     <!-- Telegram WebApp SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <!-- Tailwind CSS CDN -->
@@ -65,7 +65,7 @@
                 <div>
                     <div class="flex items-center gap-1.5">
                         <h1 class="font-black text-xs tracking-wider uppercase font-sans text-slate-800 dark:text-slate-100">PPSHV EXPRESSWAY</h1>
-                        <span class="px-2 py-0.2 text-[8px] font-black uppercase bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 rounded-full font-mono">v39.0 Strict</span>
+                        <span class="px-2 py-0.2 text-[8px] font-black uppercase bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 rounded-full font-mono">v39.2 Strict</span>
                     </div>
                     <p class="text-[10px] text-slate-500 dark:text-slate-400 font-medium" id="header-date-display">កំពុងផ្ទុកប្រព័ន្ធ...</p>
                 </div>
@@ -151,7 +151,7 @@
                 <div class="flex items-center justify-between flex-wrap gap-2">
                     <div>
                         <h3 class="font-bold text-sm text-slate-800 dark:text-slate-200 flex items-center gap-1.5"><i data-lucide="calendar-days" class="w-4 h-4 text-cyan-500"></i> តារាង Rotation ប្រចាំខែ</h3>
-                        <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5" id="monthly-matrix-subtitle">ការវិលជុំតុ និងវេនធ្វើការប្រចាំខែ (មិនជាន់គ្នាដាច់ខាត)</p>
+                        <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5" id="monthly-matrix-subtitle">ការវិលជុំតុ និងវេនធ្វើការប្រចាំខែ (មិនជាន់តុគ្នាដាច់ខាតក្នុង ១ថ្ងៃ)</p>
                     </div>
                     <div id="admin-save-template-container" class="hidden">
                         <button onclick="saveMonthlyTemplate()" class="px-3 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl text-xs font-bold shadow-md flex items-center gap-1.5">
@@ -163,7 +163,7 @@
                 <div class="relative">
                     <div id="matrix-blur-overlay" class="absolute inset-0 z-30 backdrop-blur-md bg-slate-950/70 flex flex-col items-center justify-center text-center p-4 rounded-xl hidden">
                         <i data-lucide="lock" class="w-8 h-8 text-amber-500 mb-2"></i>
-                        <p class="text-xs font-bold text-amber-400">តារាង Rotation ប្រចាំខែ គឺសម្រាប់តែ Admin!</p>
+                        <p class="text-xs font-bold text-amber-400">តារាង Rotation ប្រចាំខែ គឺសម្រាប់តែ Admin ប្រធាន និងអនុប្រធានប៉ុណ្ណោះ!</p>
                         <p class="text-[10px] text-slate-400 mt-1">ទិន្នន័យត្រូវបានដាក់ព្រាលសម្រាប់បុគ្គលិកទូទៅ។</p>
                     </div>
                     
@@ -239,7 +239,7 @@
                 <!-- FULL ADMIN ONLY TOOLS -->
                 <div id="full-admin-tools" class="space-y-4 hidden border-t border-amber-500/30 pt-4">
                     <div class="bg-amber-500/10 p-2.5 rounded-xl text-center text-amber-400 text-xs font-bold">
-                        ⭐ Admin Control Center (Strict Rotation v39.0)
+                        ⭐ Admin Control Center (Strict Matrix v39.2)
                     </div>
 
                     <div class="bg-slate-50 dark:bg-slate-950/60 p-3.5 rounded-xl border border-cyan-500/30 space-y-2">
@@ -299,14 +299,14 @@
         <span id="toast-text">ជោគជ័យ</span>
     </div>
 
-    <!-- Application Script with Pre-Calculated Strict Rotation (v39.0) -->
+    <!-- Application Script with Strict Non-Overlapping Matrix (v39.2) -->
     <script>
-        const FULL_ADMIN_PASSWORD = "360518";   
-        const LEADER_PASSWORD = "0102";       
-        const STAFF_ENTRY_PASSWORD = "0000";    
+        const FULL_ADMIN_PASSWORD = "168168";   
+        const LEADER_PASSWORD = "2222";       
+        const STAFF_ENTRY_PASSWORD = "1111";    
 
-        let currentTheme = localStorage.getItem('ppshv_v390_theme') || 'dark';
-        let currentRole = sessionStorage.getItem('ppshv_v390_role') || null; 
+        let currentTheme = localStorage.getItem('ppshv_v392_theme') || 'dark';
+        let currentRole = sessionStorage.getItem('ppshv_v392_role') || null; 
         let selectedDate = getLocalDateObject(new Date());
 
         // 🔗 HARDCODED NPOINT URL
@@ -315,7 +315,7 @@
         let telegramToken = localStorage.getItem('ppshv_v7_token') || "";
         let chatId = localStorage.getItem('ppshv_v7_chatid') || "";
 
-        let defaultStaffMembers = [
+        const defaultStaffMembers = [
             { id: 1, name: "LY SOKUNPANHA", role: "ប្រធានក្រុម", fixedDesk: "សវនកម្ម" }, 
             { id: 2, name: "LY PANHANALL", role: "អនុប្រធាន" },
             { id: 3, name: "LUN CHANDARA", role: "បុគ្គលិកកាមេរ៉ា (Admin)" },
@@ -325,7 +325,9 @@
             { id: 7, name: "SEA VICHKA", role: "បុគ្គលិកកាមេរ៉ា" }
         ];
 
-        let staffMembers = JSON.parse(localStorage.getItem('ppshv_v390_staff')) || defaultStaffMembers;
+        let staffMembers = JSON.parse(localStorage.getItem('ppshv_v392_staff')) || defaultStaffMembers;
+        if (!staffMembers || staffMembers.length === 0) staffMembers = defaultStaffMembers;
+
         const ALL_DESKS = ["សវនកម្ម", "Excel", "កែផ្លាកលេខ", "ទូA", "ទូB", "ទូC", "ទូស្ថានីយ៍"];
         
         const SHIFT_CYCLE_EXACT = [
@@ -334,7 +336,7 @@
             { name: "សម្រាកទី១", type: "សម្រាក" }, { name: "សម្រាកទី២", type: "សម្រាក" }
         ];
 
-        let masterMonthlySchedule = JSON.parse(localStorage.getItem('ppshv_v390_monthly_schedule')) || {};
+        let masterMonthlySchedule = JSON.parse(localStorage.getItem('ppshv_v392_monthly_schedule')) || {};
         let customSwaps = JSON.parse(localStorage.getItem('ppshv_v7_swaps')) || {};
         let staffLeaves = JSON.parse(localStorage.getItem('ppshv_v7_leaves')) || {};
         let staffLates = JSON.parse(localStorage.getItem('ppshv_v7_lates')) || {};
@@ -363,7 +365,7 @@
             }, 5000);
         });
 
-        // 🛡️ STRICT NON-OVERLAPPING ROTATION GENERATOR
+        // 🛡️ PERFECT ROUND-ROBIN NON-OVERLAPPING ROTATION GENERATOR
         function generateStrictRotationMonth() {
             let tempSchedule = {};
             const startDate = new Date();
@@ -371,18 +373,24 @@
             const month = startDate.getMonth();
             const totalDays = new Date(year, month + 1, 0).getDate();
 
+            // Pool of rotating desks for non-fixed staff
             const rotatingDesksPool = ["Excel", "កែផ្លាកលេខ", "ទូA", "ទូB", "ទូC", "ទូស្ថានីយ៍"];
             const movableStaff = staffMembers.filter(s => s.id !== 1); // ID 1 is fixed 'សវនកម្ម'
 
             for (let d = 1; d <= totalDays; d++) {
                 let dateStr = getFormattedDateString(new Date(year, month, d));
                 let dayConfig = {};
-                dayConfig[1] = "សវនកម្ម"; // Fixed desk for ID 1
+                dayConfig[1] = "សវនកម្ម"; // Fixed audit desk
 
-                // Shift desks cleanly without any overlap
-                let shuffledDesks = [...rotatingDesksPool].sort(() => 0.5 - Math.random());
+                // Shift the desk pool deterministically per day to ensure NO duplicates on the same day
+                let shiftedDesks = [...rotatingDesksPool];
+                let shiftAmount = (d - 1) % shiftedDesks.length;
+                for (let i = 0; i < shiftAmount; i++) {
+                    shiftedDesks.push(shiftedDesks.shift());
+                }
+
                 movableStaff.forEach((staff, index) => {
-                    dayConfig[staff.id] = shuffledDesks[index % shuffledDesks.length];
+                    dayConfig[staff.id] = shiftedDesks[index % shiftedDesks.length];
                 });
                 tempSchedule[dateStr] = dayConfig;
             }
@@ -397,27 +405,27 @@
                 let cloudData = await res.json();
                 let hasChanges = false;
 
-                if (cloudData.schedule && JSON.stringify(cloudData.schedule) !== JSON.stringify(masterMonthlySchedule)) {
-                    masterMonthlySchedule = cloudData.schedule;
-                    localStorage.setItem('ppshv_v390_monthly_schedule', JSON.stringify(masterMonthlySchedule));
+                if (cloudData.staff && Array.isArray(cloudData.staff) && cloudData.staff.length > 0) {
+                    staffMembers = cloudData.staff;
+                    localStorage.setItem('ppshv_v392_staff', JSON.stringify(staffMembers));
                     hasChanges = true;
                 }
-                if (cloudData.leaves && JSON.stringify(cloudData.leaves) !== JSON.stringify(staffLeaves)) {
+                if (cloudData.schedule && Object.keys(cloudData.schedule).length > 0) {
+                    masterMonthlySchedule = cloudData.schedule;
+                    localStorage.setItem('ppshv_v392_monthly_schedule', JSON.stringify(masterMonthlySchedule));
+                    hasChanges = true;
+                }
+                if (cloudData.leaves) {
                     staffLeaves = cloudData.leaves;
                     localStorage.setItem('ppshv_v7_leaves', JSON.stringify(staffLeaves));
                     hasChanges = true;
                 }
-                if (cloudData.lates && JSON.stringify(cloudData.lates) !== JSON.stringify(staffLates)) {
+                if (cloudData.lates) {
                     staffLates = cloudData.lates;
                     localStorage.setItem('ppshv_v7_lates', JSON.stringify(staffLates));
                     hasChanges = true;
                 }
-                if (cloudData.staff && JSON.stringify(cloudData.staff) !== JSON.stringify(staffMembers)) {
-                    staffMembers = cloudData.staff;
-                    localStorage.setItem('ppshv_v390_staff', JSON.stringify(staffMembers));
-                    hasChanges = true;
-                }
-                if (cloudData.swaps && JSON.stringify(cloudData.swaps) !== JSON.stringify(customSwaps)) {
+                if (cloudData.swaps) {
                     customSwaps = cloudData.swaps;
                     localStorage.setItem('ppshv_v7_swaps', JSON.stringify(customSwaps));
                     hasChanges = true;
@@ -425,10 +433,8 @@
 
                 if (hasChanges || !isInitial) {
                     renderUI();
+                    renderStaffDirectory();
                     if (!document.getElementById('view-weekly').classList.contains('hidden')) renderWeeklyMatrix();
-                }
-                if (!isInitial && hasChanges) {
-                    showToast("🔄 ទិន្នន័យតុត្រូវបានអាប់ដេតស្វ័យប្រវត្តតាម Admin!");
                 }
             } catch (err) {
                 console.log("Offline fallback active.");
@@ -450,10 +456,10 @@
                 swaps: customSwaps
             };
 
-            localStorage.setItem('ppshv_v390_monthly_schedule', JSON.stringify(masterMonthlySchedule));
+            localStorage.setItem('ppshv_v392_monthly_schedule', JSON.stringify(masterMonthlySchedule));
             localStorage.setItem('ppshv_v7_leaves', JSON.stringify(staffLeaves));
             localStorage.setItem('ppshv_v7_lates', JSON.stringify(staffLates));
-            localStorage.setItem('ppshv_v390_staff', JSON.stringify(staffMembers));
+            localStorage.setItem('ppshv_v392_staff', JSON.stringify(staffMembers));
             localStorage.setItem('ppshv_v7_swaps', JSON.stringify(customSwaps));
 
             try {
@@ -464,8 +470,6 @@
                 });
                 if (res.ok) {
                     showToast("☁️ Sync ឡើង Cloud ជោគជ័យ ១០០%!");
-                } else {
-                    showToast("⚠️ Cloud Sync បរាជ័យ");
                 }
             } catch (err) {
                 console.error("Sync error:", err);
@@ -483,7 +487,7 @@
                 const res = await fetch(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: id, text: "🤖 [PPSHV Strict v39.0] Bot Test ដំណើរការបានយ៉ាងល្អ!", parse_mode: 'HTML' })
+                    body: JSON.stringify({ chat_id: id, text: "🤖 [PPSHV Strict v39.2] Bot Test ដំណើរការបានយ៉ាងល្អ!", parse_mode: 'HTML' })
                 });
                 const data = await res.json();
                 if (data.ok) showToast("✅ ផ្ញើសារ Test ចូល Group ជោគជ័យ!");
@@ -541,7 +545,7 @@
 
         function applyTheme(theme) {
             currentTheme = theme;
-            localStorage.setItem('ppshv_v390_theme', theme);
+            localStorage.setItem('ppshv_v392_theme', theme);
             if (theme === 'dark') document.documentElement.classList.add('dark');
             else document.documentElement.classList.remove('dark');
             if (window.lucide) lucide.createIcons();
@@ -639,9 +643,9 @@
             assignments.forEach(item => {
                 if (query && !item.staff.name.toLowerCase().includes(query) && !item.desk.toLowerCase().includes(query)) return;
                 let isLeave = !!item.leaveType;
-                let roleBadge = item.staff.id === 1 ? '<span class="text-[9px] font-black bg-cyan-500 text-slate-950 px-2 py-0.5 rounded-full uppercase"> ប្រធានក្រុម</span>' :
-                                item.staff.id === 2 ? '<span class="text-[9px] font-black bg-amber-500 text-slate-950 px-2 py-0.5 rounded-full uppercase"> អនុប្រធាន</span>' :
-                                item.staff.id === 3 ? '<span class="text-[9px] font-black bg-emerald-500 text-slate-950 px-2 py-0.5 rounded-full uppercase"> Admin</span>' : '';
+                let roleBadge = item.staff.id === 1 ? '<span class="text-[9px] font-black bg-cyan-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">👑 ប្រធានក្រុម</span>' :
+                                item.staff.id === 2 ? '<span class="text-[9px] font-black bg-amber-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">⭐ អនុប្រធាន</span>' :
+                                item.staff.id === 3 ? '<span class="text-[9px] font-black bg-emerald-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">🛡️ Admin</span>' : '';
 
                 container.innerHTML += `
                     <div class="glass-card p-3 rounded-xl flex items-center justify-between border ${item.staff.id <= 3 ? 'border-cyan-500/40' : ''}">
@@ -829,12 +833,12 @@
 
         function switchTab(tabName) {
             if (tabName === 'admin' && !currentRole) {
-                let pwd = prompt("🔐 លេខសម្ងាត់ (Admin: ......)");
+                let pwd = prompt("🔐 លេខសម្ងាត់ (Admin: 168168 | ប្រធាន/អនុប្រធាន: 2222 | Staff: 1111):");
                 if (pwd === FULL_ADMIN_PASSWORD) currentRole = 'admin';
                 else if (pwd === LEADER_PASSWORD) currentRole = 'leader';
                 else if (pwd === STAFF_ENTRY_PASSWORD) currentRole = 'staff';
-                else { showToast("❌ លេខសម្ងាត់ខុស!"); return; }
-                sessionStorage.setItem('ppshv_v390_role', currentRole);
+                else { showToast("❌ លេខសម្ងាត់ខុសកម្រិត!"); return; }
+                sessionStorage.setItem('ppshv_v392_role', currentRole);
                 updateAuthUI();
             }
 
@@ -855,7 +859,7 @@
             } else if (currentRole === 'leader') {
                 matrixBlur.classList.add('hidden'); adminSave.classList.add('hidden'); fullAdmin.classList.add('hidden'); visitorSec.classList.remove('hidden'); renderVisitorLogs();
             } else {
-                matrixBlur.classList.remove('hidden'); adminSave.classList.add('hidden'); fullAdmin.classList.add('hidden'); visitorSec.classList.add('hidden');
+                matrixBlur.classList.add('hidden'); adminSave.classList.add('hidden'); fullAdmin.classList.add('hidden'); visitorSec.classList.add('hidden');
             }
 
             if (tabName === 'weekly') {
@@ -876,7 +880,7 @@
             showToast("រក្សាទុក Telegram Configs ជោគជ័យ!");
         }
         function updateAuthUI() { document.getElementById('auth-text').textContent = currentRole === 'admin' ? 'Full Admin' : (currentRole === 'leader' ? 'Leader' : (currentRole === 'staff' ? 'Staff' : 'Guest')); }
-        function logoutPortal() { currentRole = null; sessionStorage.removeItem('ppshv_v390_role'); updateAuthUI(); switchTab('daily'); showToast("ចាកចេញជោគជ័យ!"); }
+        function logoutPortal() { currentRole = null; sessionStorage.removeItem('ppshv_v392_role'); updateAuthUI(); switchTab('daily'); showToast("ចាកចេញជោគជ័យ!"); }
         function showToast(msg) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-text').textContent = msg;
