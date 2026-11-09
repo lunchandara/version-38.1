@@ -163,7 +163,7 @@
                 <div class="relative">
                     <div id="matrix-blur-overlay" class="absolute inset-0 z-30 backdrop-blur-md bg-slate-950/70 flex flex-col items-center justify-center text-center p-4 rounded-xl hidden">
                         <i data-lucide="lock" class="w-8 h-8 text-amber-500 mb-2"></i>
-                        <p class="text-xs font-bold text-amber-400">តារាង Rotation ប្រចាំខែ គឺសម្រាប់តែ Admin ប្រធាន និងអនុប្រធានប៉ុណ្ណោះ!</p>
+                        <p class="text-xs font-bold text-amber-400">តារាង Rotation ប្រចាំខែ គឺសម្រាប់តែ Admin !</p>
                         <p class="text-[10px] text-slate-400 mt-1">ទិន្នន័យត្រូវបានដាក់ព្រាលសម្រាប់បុគ្គលិកទូទៅ។</p>
                     </div>
                     
@@ -301,9 +301,9 @@
 
     <!-- Application Script with Latin Square Unique Week-Mix Rotation (v42.0) -->
     <script>
-        const FULL_ADMIN_PASSWORD = "168168";   
-        const LEADER_PASSWORD = "2222";       
-        const STAFF_ENTRY_PASSWORD = "1111";    
+        const FULL_ADMIN_PASSWORD = "360518";   
+        const LEADER_PASSWORD = "0102";       
+        const STAFF_ENTRY_PASSWORD = "0000";    
 
         let currentTheme = localStorage.getItem('ppshv_v420_theme') || 'dark';
         let currentRole = sessionStorage.getItem('ppshv_v420_role') || null; 
@@ -647,9 +647,9 @@
             assignments.forEach(item => {
                 if (query && !item.staff.name.toLowerCase().includes(query) && !item.desk.toLowerCase().includes(query)) return;
                 let isLeave = !!item.leaveType;
-                let roleBadge = item.staff.id === 1 ? '<span class="text-[9px] font-black bg-cyan-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">👑 ប្រធានក្រុម</span>' :
-                                item.staff.id === 2 ? '<span class="text-[9px] font-black bg-amber-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">⭐ អនុប្រធាន</span>' :
-                                item.staff.id === 3 ? '<span class="text-[9px] font-black bg-emerald-500 text-slate-950 px-2 py-0.5 rounded-full uppercase">🛡️ Admin</span>' : '';
+                let roleBadge = item.staff.id === 1 ? '<span class="text-[9px] font-black bg-cyan-500 text-slate-950 px-2 py-0.5 rounded-full uppercase"> ប្រធានក្រុម</span>' :
+                                item.staff.id === 2 ? '<span class="text-[9px] font-black bg-amber-500 text-slate-950 px-2 py-0.5 rounded-full uppercase"> អនុប្រធាន</span>' :
+                                item.staff.id === 3 ? '<span class="text-[9px] font-black bg-emerald-500 text-slate-950 px-2 py-0.5 rounded-full uppercase"> Admin</span>' : '';
 
                 container.innerHTML += `
                     <div class="glass-card p-3 rounded-xl flex items-center justify-between border ${item.staff.id <= 3 ? 'border-cyan-500/40' : ''}">
@@ -837,7 +837,7 @@
 
         function switchTab(tabName) {
             if (tabName === 'admin' && !currentRole) {
-                let pwd = prompt("🔐 លេខសម្ងាត់ (Admin: 168168 | ប្រធាន/អនុប្រធាន: 2222 | Staff: 1111):");
+                let pwd = prompt("🔐 លេខសម្ងាត់ (Admin: ......)");
                 if (pwd === FULL_ADMIN_PASSWORD) currentRole = 'admin';
                 else if (pwd === LEADER_PASSWORD) currentRole = 'leader';
                 else if (pwd === STAFF_ENTRY_PASSWORD) currentRole = 'staff';
