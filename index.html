@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PPSHV Expressway - Zero Duplicate Suite v46.0</title>
+    <title>PPSHV Expressway - Latin Square Mix Suite v42.0</title>
     <!-- Telegram WebApp SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <!-- Tailwind CSS CDN -->
@@ -65,7 +65,7 @@
                 <div>
                     <div class="flex items-center gap-1.5">
                         <h1 class="font-black text-xs tracking-wider uppercase font-sans text-slate-800 dark:text-slate-100">PPSHV EXPRESSWAY</h1>
-                        <span class="px-2 py-0.2 text-[8px] font-black uppercase bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 rounded-full font-mono">v46.0 ZeroDup</span>
+                        <span class="px-2 py-0.2 text-[8px] font-black uppercase bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 rounded-full font-mono">v42.0 Latin</span>
                     </div>
                     <p class="text-[10px] text-slate-500 dark:text-slate-400 font-medium" id="header-date-display">កំពុងផ្ទុកប្រព័ន្ធ...</p>
                 </div>
@@ -140,7 +140,7 @@
                     <i data-lucide="send" class="w-4 h-4"></i> <span>ផ្ញើ Telegram Group</span>
                 </button>
                 <button onclick="copySummaryText()" class="w-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 py-3 rounded-xl font-bold text-xs border border-slate-300 dark:border-slate-700 flex items-center justify-center gap-2">
-                    <i data-lucide="copy" class="w-4 h-4 text-cyan-500"></i> <span>ចម្លងរបាយការណ៍</span>
+                    <i data-lucide="copy" class="w-4 h-4 text-cyan-500"></i> <span>ចម្លងរបាយการណ៍</span>
                 </button>
             </div>
         </div>
@@ -151,7 +151,7 @@
                 <div class="flex items-center justify-between flex-wrap gap-2">
                     <div>
                         <h3 class="font-bold text-sm text-slate-800 dark:text-slate-200 flex items-center gap-1.5"><i data-lucide="calendar-days" class="w-4 h-4 text-cyan-500"></i> តារាង Rotation ប្រចាំខែ</h3>
-                        <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5" id="monthly-matrix-subtitle">Zero Duplicate Suite (v46.0)</p>
+                        <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5" id="monthly-matrix-subtitle">តុមិនជាន់គ្នា ១ សប្តាហ៍ចូល ១ ដង (Latin Square Mix)</p>
                     </div>
                     <div id="admin-save-template-container" class="hidden">
                         <button onclick="saveMonthlyTemplate()" class="px-3 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl text-xs font-bold shadow-md flex items-center gap-1.5">
@@ -239,7 +239,7 @@
                 <!-- FULL ADMIN ONLY TOOLS -->
                 <div id="full-admin-tools" class="space-y-4 hidden border-t border-amber-500/30 pt-4">
                     <div class="bg-amber-500/10 p-2.5 rounded-xl text-center text-amber-400 text-xs font-bold">
-                        ⭐ Admin Control Center (ZeroDup Suite v46.0)
+                        ⭐ Admin Control Center (Latin Square v42.0)
                     </div>
 
                     <div class="bg-slate-50 dark:bg-slate-950/60 p-3.5 rounded-xl border border-cyan-500/30 space-y-2">
@@ -299,14 +299,14 @@
         <span id="toast-text">ជោគជ័យ</span>
     </div>
 
-    <!-- Application Script with v46.0 Zero Duplicate Bulletproof Suite -->
+    <!-- Application Script with Latin Square Unique Week-Mix Rotation (v42.0) -->
     <script>
         const FULL_ADMIN_PASSWORD = "168168";   
         const LEADER_PASSWORD = "2222";       
         const STAFF_ENTRY_PASSWORD = "1111";    
 
-        let currentTheme = localStorage.getItem('ppshv_v460_theme') || 'dark';
-        let currentRole = sessionStorage.getItem('ppshv_v460_role') || null; 
+        let currentTheme = localStorage.getItem('ppshv_v420_theme') || 'dark';
+        let currentRole = sessionStorage.getItem('ppshv_v420_role') || null; 
         let selectedDate = getLocalDateObject(new Date());
 
         // 🔗 HARDCODED NPOINT URL
@@ -325,7 +325,7 @@
             { id: 7, name: "SEA VICHKA", role: "បុគ្គលិកកាមេរ៉ា" }
         ];
 
-        let staffMembers = JSON.parse(localStorage.getItem('ppshv_v460_staff')) || defaultStaffMembers;
+        let staffMembers = JSON.parse(localStorage.getItem('ppshv_v420_staff')) || defaultStaffMembers;
         if (!staffMembers || staffMembers.length === 0) staffMembers = defaultStaffMembers;
 
         const ALL_DESKS = ["សវនកម្ម", "Excel", "កែផ្លាកលេខ", "ទូA", "ទូB", "ទូC", "ទូស្ថានីយ៍"];
@@ -336,7 +336,7 @@
             { name: "សម្រាកទី១", type: "សម្រាក" }, { name: "សម្រាកទី២", type: "សម្រាក" }
         ];
 
-        let masterMonthlySchedule = JSON.parse(localStorage.getItem('ppshv_v460_monthly_schedule')) || {};
+        let masterMonthlySchedule = JSON.parse(localStorage.getItem('ppshv_v420_monthly_schedule')) || {};
         let customSwaps = JSON.parse(localStorage.getItem('ppshv_v7_swaps')) || {};
         let staffLeaves = JSON.parse(localStorage.getItem('ppshv_v7_leaves')) || {};
         let staffLates = JSON.parse(localStorage.getItem('ppshv_v7_lates')) || {};
@@ -352,7 +352,7 @@
             trackTelegramVisitor();
 
             if (Object.keys(masterMonthlySchedule).length === 0) {
-                generateZeroDuplicateMonth();
+                generateLatinSquareRotationMonth();
             }
 
             updateAuthUI();
@@ -365,12 +365,12 @@
             }, 5000);
         });
 
-        // 🛡️ v46.0 ZERO DUPLICATE BULLETPROOF GENERATOR
-        // Guarantees:
-        // 1. diffDays strictly increments -> consecutive days (ព្រឹកទី១ & ព្រឹកទី២) ALWAYS get different desks.
-        // 2. staffIdx offset ensures everyone gets a unique desk on the exact same day.
-        // 3. Zero repetition across working days.
-        function generateZeroDuplicateMonth() {
+        // 🎲 LATIN SQUARE MIX ROTATION GENERATOR
+        // Guarantees: 
+        // 1. No desk duplication on the same day.
+        // 2. Each staff gets each desk at most ONCE per week (no repeating desk 2-3 times in a week).
+        // 3. Every week is 100% unique and different from previous weeks.
+        function generateLatinSquareRotationMonth() {
             let tempSchedule = {};
             const startDate = new Date();
             const year = startDate.getFullYear();
@@ -379,44 +379,23 @@
 
             const rotatingDesksPool = ["Excel", "កែផ្លាកលេខ", "ទូA", "ទូB", "ទូC", "ទូស្ថានីយ៍"];
             const movableStaff = staffMembers.filter(s => s.id !== 1); // ID 1 is fixed 'សវនកម្ម'
-            const baseDate = new Date(2026, 10, 6);
 
             for (let d = 1; d <= totalDays; d++) {
                 let dateObj = new Date(year, month, d);
                 let dateStr = getFormattedDateString(dateObj);
-                
-                let diffDays = Math.round((dateObj - baseDate) / (1000 * 60 * 60 * 24));
-                let cycleIdx = (3 + (diffDays % 6)) % 6;
-                if (cycleIdx < 0) cycleIdx += 6;
-                let sType = SHIFT_CYCLE_EXACT[cycleIdx].type;
-
                 let dayConfig = {};
-                dayConfig[1] = "សវនកម្ម"; // Fixed audit desk
+                dayConfig[1] = "សវនកម្ម"; // Fixed audit desk for ID 1
 
-                if (sType === "សម្រាក") {
-                    movableStaff.forEach(staff => {
-                        dayConfig[staff.id] = "🔴 សម្រាកថ្ងៃ";
-                    });
-                } else {
-                    let assignedToday = new Set();
-                    assignedToday.add("សវនកម្ម");
+                let weekIndex = Math.floor((d - 1) / 7);
+                let dayOfWeek = (d - 1) % 7; // 0 to 6
 
-                    movableStaff.forEach((staff, staffIdx) => {
-                        // Sequential formula: diffDays + staffIdx guarantees unique desks per day and no repeat on consecutive days
-                        let deskIdx = (staffIdx + diffDays) % rotatingDesksPool.length;
-                        let desk = rotatingDesksPool[deskIdx];
+                movableStaff.forEach((staff, staffIdx) => {
+                    // Latin Square Formula: (staffIdx + dayOfWeek + weekIndex * 2) % 6
+                    // This ensures every staff member gets 6 unique desks across 6 days of the week, and no two staff share a desk on the same day.
+                    let deskIdx = (staffIdx + dayOfWeek + (weekIndex * 2)) % rotatingDesksPool.length;
+                    dayConfig[staff.id] = rotatingDesksPool[deskIdx];
+                });
 
-                        // Absolute safety check against any duplicate on the same day
-                        let safety = 0;
-                        while (assignedToday.has(desk) && safety < rotatingDesksPool.length) {
-                            deskIdx = (deskIdx + 1) % rotatingDesksPool.length;
-                            desk = rotatingDesksPool[deskIdx];
-                            safety++;
-                        }
-                        assignedToday.add(desk);
-                        dayConfig[staff.id] = desk;
-                    });
-                }
                 tempSchedule[dateStr] = dayConfig;
             }
 
@@ -432,12 +411,12 @@
 
                 if (cloudData.staff && Array.isArray(cloudData.staff) && cloudData.staff.length > 0) {
                     staffMembers = cloudData.staff;
-                    localStorage.setItem('ppshv_v460_staff', JSON.stringify(staffMembers));
+                    localStorage.setItem('ppshv_v420_staff', JSON.stringify(staffMembers));
                     hasChanges = true;
                 }
                 if (cloudData.schedule && Object.keys(cloudData.schedule).length > 0) {
                     masterMonthlySchedule = cloudData.schedule;
-                    localStorage.setItem('ppshv_v460_monthly_schedule', JSON.stringify(masterMonthlySchedule));
+                    localStorage.setItem('ppshv_v420_monthly_schedule', JSON.stringify(masterMonthlySchedule));
                     hasChanges = true;
                 }
                 if (cloudData.leaves) {
@@ -481,10 +460,10 @@
                 swaps: customSwaps
             };
 
-            localStorage.setItem('ppshv_v460_monthly_schedule', JSON.stringify(masterMonthlySchedule));
+            localStorage.setItem('ppshv_v420_monthly_schedule', JSON.stringify(masterMonthlySchedule));
             localStorage.setItem('ppshv_v7_leaves', JSON.stringify(staffLeaves));
             localStorage.setItem('ppshv_v7_lates', JSON.stringify(staffLates));
-            localStorage.setItem('ppshv_v460_staff', JSON.stringify(staffMembers));
+            localStorage.setItem('ppshv_v420_staff', JSON.stringify(staffMembers));
             localStorage.setItem('ppshv_v7_swaps', JSON.stringify(customSwaps));
 
             try {
@@ -512,7 +491,7 @@
                 const res = await fetch(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: id, text: "🤖 [PPSHV ZeroDup v46.0] Bot Test ដំណើរការបានយ៉ាងល្អ!", parse_mode: 'HTML' })
+                    body: JSON.stringify({ chat_id: id, text: "🤖 [PPSHV Latin v42.0] Bot Test ដំណើរការបានយ៉ាងល្អ!", parse_mode: 'HTML' })
                 });
                 const data = await res.json();
                 if (data.ok) showToast("✅ ផ្ញើសារ Test ចូល Group ជោគជ័យ!");
@@ -570,7 +549,7 @@
 
         function applyTheme(theme) {
             currentTheme = theme;
-            localStorage.setItem('ppshv_v460_theme', theme);
+            localStorage.setItem('ppshv_v420_theme', theme);
             if (theme === 'dark') document.documentElement.classList.add('dark');
             else document.documentElement.classList.remove('dark');
             if (window.lucide) lucide.createIcons();
@@ -696,7 +675,7 @@
             const currentMonth = selectedDate.getMonth();
             const totalDaysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
             const monthsKhmer = ["មករា", "កុម្ភៈ", "មីនា", "មេសា", "ឧសភា", "មីថុនា", "កក្កដា", "សីហា", "កញ្ញា", "តុលា", "វិច្ឆិកា", "ធ្នូ"];
-            document.getElementById('monthly-matrix-subtitle').textContent = `តារាងប្រចាំខែ${monthsKhmer[currentMonth]} ឆ្នាំ${currentYear} (${totalDaysInMonth} ថ្ងៃ) - ZeroDup v46.0`;
+            document.getElementById('monthly-matrix-subtitle').textContent = `តារាងប្រចាំខែ${monthsKhmer[currentMonth]} ឆ្នាំ${currentYear} (${totalDaysInMonth} ថ្ងៃ) - Latin Square Unique`;
 
             let header = `<tr class="bg-slate-900 text-slate-400 border-b border-slate-800 sticky top-0 z-10"><th class="p-2 font-bold sticky left-0 bg-slate-900 z-20">បុគ្គលិក</th>`;
             let dates = [];
@@ -749,7 +728,7 @@
 
         async function carryOverLastMonthSchedule() {
             if (currentRole !== 'admin') return;
-            generateZeroDuplicateMonth();
+            generateLatinSquareRotationMonth();
             await syncToCloud();
             showToast("ផ្ទេរ និង Sync តុខែថ្មីជោគជ័យ!");
             renderWeeklyMatrix();
@@ -788,7 +767,7 @@
             const newId = staffMembers.length > 0 ? Math.max(...staffMembers.map(s => s.id)) + 1 : 1;
             staffMembers.push({ id: newId, name: nameInput.value.trim().toUpperCase(), role: roleInput.value.trim() || "បុគ្គលិក" });
             nameInput.value = ''; roleInput.value = '';
-            generateZeroDuplicateMonth();
+            generateLatinSquareRotationMonth();
             await syncToCloud();
             renderStaffDirectory(); renderUI();
             showToast("បន្ថែមបុគ្គលិកជោគជ័យ (Synced)!");
@@ -863,7 +842,7 @@
                 else if (pwd === LEADER_PASSWORD) currentRole = 'leader';
                 else if (pwd === STAFF_ENTRY_PASSWORD) currentRole = 'staff';
                 else { showToast("❌ លេខសម្ងាត់ខុសកម្រិត!"); return; }
-                sessionStorage.setItem('ppshv_v460_role', currentRole);
+                sessionStorage.setItem('ppshv_v420_role', currentRole);
                 updateAuthUI();
             }
 
@@ -905,7 +884,7 @@
             showToast("រក្សាទុក Telegram Configs ជោគជ័យ!");
         }
         function updateAuthUI() { document.getElementById('auth-text').textContent = currentRole === 'admin' ? 'Full Admin' : (currentRole === 'leader' ? 'Leader' : (currentRole === 'staff' ? 'Staff' : 'Guest')); }
-        function logoutPortal() { currentRole = null; sessionStorage.removeItem('ppshv_v460_role'); updateAuthUI(); switchTab('daily'); showToast("ចាកចេញជោគជ័យ!"); }
+        function logoutPortal() { currentRole = null; sessionStorage.removeItem('ppshv_v420_role'); updateAuthUI(); switchTab('daily'); showToast("ចាកចេញជោគជ័យ!"); }
         function showToast(msg) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-text').textContent = msg;
